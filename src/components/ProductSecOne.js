@@ -5,6 +5,7 @@ import { Store } from "../context/store";
 import ImageOne from '../assets/images/first-slider-1.jpg';
 import ImageTwo from '../assets/images/first-slider-2.jpg';
 import StarImg from '../assets/images/star-img.png';
+import { API_URL } from "../lib/constants";
 
 const ProductSecOne = (props) => {
     let store = useContext(Store)
@@ -28,7 +29,7 @@ const ProductSecOne = (props) => {
 
 
     const addCart = (id) => {
-        let url = "http://localhost:5000/cart";
+        let url = `${API_URL}/cart`;
         let data = { product_id: id };
         fetch(url, {
             headers: {

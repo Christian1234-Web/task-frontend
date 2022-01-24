@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { API_URL } from "../../lib/constants";
 
 
 function CreateProduct() {
@@ -44,7 +45,7 @@ function CreateProduct() {
     <>
       <section className="adminCreatePost">
         <div>
-          <Form encType="multipart/form-data" action="http://localhost:5000/product" method="POST">
+          <Form encType="multipart/form-data" action={`${API_URL}/product`} method="POST">
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Name of  Cake</Form.Label>
               <Form.Control type="text" name="name"

@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import { Store } from "../context/store";
 import { useCookies } from 'react-cookie';
 import { useParams, useHistory } from 'react-router-dom';
+import { API_URL } from "../lib/constants";
 
 function ActivatePage() {
   let store = useContext(Store);
@@ -14,7 +15,7 @@ function ActivatePage() {
 
 
   const activateBtn = () => {
-    let url = 'http://localhost:5000/activate-account';
+    let url = `${API_URL}/activate-account`;
     console.log(id.id);
     let data = { token: id.id };
     console.log(data);

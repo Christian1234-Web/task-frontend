@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import ImageOne from '../assets/images/first-slider-1.jpg';
 import ImageTwo from '../assets/images/first-slider-2.jpg';
 import { Store } from '../context/store';
+import { API_URL } from "../lib/constants";
 
 const Product = () => {
   let store = useContext(Store);
@@ -18,7 +19,7 @@ const Product = () => {
   }, []);
 
   const fetchProduct = () => {
-    let url = 'http://localhost:5000/product/' + id.id;
+    let url = `${API_URL}/product/` + id.id;
     fetch(url)
       .then(res => res.json())
       .then(res => {

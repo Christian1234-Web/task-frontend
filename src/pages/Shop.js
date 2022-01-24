@@ -8,6 +8,7 @@ import StarUp from '../assets/images/starUp-img.png';
 import StarImg from '../assets/images/star-img.png';
 import Footer from '../components/Footer';
 import { Store } from "../context/store";
+import { API_URL } from "../lib/constants";
 
 
 function Shop(props) {
@@ -21,7 +22,7 @@ function Shop(props) {
   }, []);
 
   let fetchItems = () => {
-    let url = "http://localhost:5000/product";
+    let url = `${API_URL}/product`;
     fetch(url)
       .then((res) => res.json())
       .then((result) => {

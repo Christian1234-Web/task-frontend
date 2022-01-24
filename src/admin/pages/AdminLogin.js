@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import SignUp from '../../assets/images/logo.jpg';
 import { useCookies } from 'react-cookie';
+import { API_URL } from "../../lib/constants";
 
 
 const AdminLogin = () => {
@@ -15,7 +16,7 @@ const AdminLogin = () => {
     let history = useHistory();
 
     let loginUser = () => {
-        let url = "http://localhost:5000/login";
+        let url = `${API_URL}/login`;
         let loginObject = { email, password, active: true };
 
         if (!email || !password) {

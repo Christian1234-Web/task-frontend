@@ -3,6 +3,7 @@ import { NavDropdown, Col, Row, OverlayTrigger } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { Store } from "../context/store";
+import { API_URL } from "../lib/constants";
 
 
 const ShopCompo = (props) => {
@@ -12,8 +13,8 @@ const ShopCompo = (props) => {
   let [name, setName] = store.storeName;
   let [proId, setProId] = store.storeId;
   let [ids, setIds] = store.ctxId
-  let url = 'http://localhost:5000';
- 
+  let url = `${API_URL}`;
+
   return (
     <>
       <div className="shopContent">

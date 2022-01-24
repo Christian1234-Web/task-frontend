@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Table, Button, Form } from 'react-bootstrap';
+import { API_URL } from "../../lib/constants";
 
 function ViewReceipt() {
     let [order, setOrder] = useState([]);
@@ -21,7 +22,7 @@ function ViewReceipt() {
     }, []);
 
     const getOrder = () => {
-        let url = "http://localhost:5000/order";
+        let url = `${API_URL}/order`;
         fetch(url)
             .then((res) => res.json())
             .then((result) => {
@@ -37,14 +38,14 @@ function ViewReceipt() {
         <>
             <section className="">
                 <div className="adminViewPro" ref={btnShow} style={{ display: 'block' }}>
-                   
+
                    {order.map((e,i)=>{
                        return(
                    <div style={{border:"1px solid gray",padding:"5px",marginBottom:"5px"}}>
                    <h1 className="fs-5">Receipt</h1>
                             <div className='row'>
                  <div className="col-md-6 col-sm-12 p-md-2 p-sm-3">
-                 <img src={`http://localhost:5000${e.product_id.image}`} alt="img"/>
+                 <img src={`${API_URL}${e.product_id.image}`} alt="img"/>
                  </div>
                  <div className="col-md-6 col-sm-12 p-md-2 p-sm-3">
                  <h1 className="fs-5">Product: {e.product_id.name} </h1>

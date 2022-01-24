@@ -10,6 +10,7 @@ import CheckBoxImg from '../assets/images/checkBox-img.png';
 import { Store } from '../context/store';
 import { PaystackButton } from "react-paystack";
 import { useCookies } from 'react-cookie';
+import { API_URL } from "../lib/constants";
 
 const CartTwo = (e) => {
   let store = useContext(Store)
@@ -28,8 +29,8 @@ const CartTwo = (e) => {
   let btnShow = useRef();
   let history = useHistory();
   let opts = { format: "%s%v", symbol: "$" };
- 
-  
+
+
   const selectOrder = (cart, pro,amount)=>{
      if (!cookie.user) {
       return history.push("/login");
@@ -41,7 +42,7 @@ setIds(pro);
   }
 
   const addOrder = () => {
-    let url = "http://localhost:5000/order";
+    let url = `${API_URL}/order`;
     let data = { product_id: ids, cart_id: idx, user_id:cookie.user };
     fetch(url, {
       headers: {
@@ -82,7 +83,7 @@ setIds(pro);
   }, []);
 
   const fetchCart = () => {
-    let url = 'http://localhost:5000/cart';
+    let url = `${API_URL}/cart`;
     fetch(url)
       .then(res => res.json())
       .then(res => {
@@ -102,7 +103,7 @@ setIds(pro);
               <div className="flex" ref={btnShow} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px' }}>
 
                 <div>
-                  <img src={`http://localhost:5000${e.product_id.image}`} style={{ objectFit: 'contain', width: '150px', height: '150px' }} />
+                  <img src={`${API_URL}${e.product_id.image}`} style={{ objectFit: 'contain', width: '150px', height: '150px' }} />
                 </div>
                 <div style={{ padding: '30px' }}>
                   <div>

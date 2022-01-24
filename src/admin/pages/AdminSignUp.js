@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import SignUp from '../../assets/images/logo.jpg';
+import { API_URL } from "../../lib/constants";
 
 const AdminSignUp = () => {
     let [name, setName] = useState('');
@@ -12,7 +13,7 @@ const AdminSignUp = () => {
     let history = useHistory();
 
     let createUser = () => {
-        let url = "http://localhost:5000/user";
+        let url = `${API_URL}/user`;
         let createObject = { name, phone, email, password, is_admin: true, is_client: false };
         fetch(url, {
             headers: {

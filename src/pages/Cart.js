@@ -13,6 +13,7 @@ import ImageTwo from '../assets/images/first-slider-2.jpg';
 import StarImg from '../assets/images/star-img.png';
 import CartImg1 from '../assets/images/cart-img1.png';
 import CheckBoxImg from '../assets/images/checkBox-img.png';
+import { API_URL } from "../lib/constants";
 
 
 // import AddToCart from '../components/AddToCart';
@@ -33,7 +34,7 @@ const Cart = () => {
   }, []);
 
   const fetchCart = () => {
-    let url = 'http://localhost:5000/cart';
+    let url = `${API_URL}/cart`;
     fetch(url)
       .then(res => res.json())
       .then(res => {
@@ -71,7 +72,7 @@ const Cart = () => {
         />
         <Footer />
       </>
-    
+
   // }
     )
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap';
+import { API_URL } from "../../lib/constants";
 
 
 function CreateUser() {
@@ -9,7 +10,7 @@ function CreateUser() {
   // let userId = '1';
 
   let createPost = () => {
-    let url = "http://localhost:5000/user";
+    let url = `${API_URL}/user`;
     let createObject = {
       name,
       email,

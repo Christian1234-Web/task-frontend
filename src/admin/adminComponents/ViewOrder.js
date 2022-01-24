@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Table, Button, Form } from 'react-bootstrap';
+import { API_URL } from "../../lib/constants";
 
 function ViewOrder() {
     let [order, setOrder] = useState([]);
@@ -22,7 +23,7 @@ function ViewOrder() {
     }, []);
 
     const getOrder = () => {
-        let url = "http://localhost:5000/order";
+        let url = `${API_URL}/order`;
         fetch(url)
             .then((res) => res.json())
             .then((result) => {
@@ -81,7 +82,7 @@ function ViewOrder() {
                                     <tr key={i}>
                                         <td>{i}</td>
                                          <td>{e.user_id.name}</td>
-                                        <td><img src={`http:localhost:5000${e.product_id.image}`} alt="fyn image" style={{ width: '50px', height: '50px', objectFit: 'contain', borderRadius: '50%' }} /></td>
+                                        <td><img src={`${API_URL}${e.product_id.image}`} alt="fyn image" style={{ width: '50px', height: '50px', objectFit: 'contain', borderRadius: '50%' }} /></td>
                                         <td>{e.product_id.name}</td>
                                         <td>{e.product_id.category}</td>
                                         <td>{e.product_id.price}</td>
@@ -107,7 +108,7 @@ function ViewOrder() {
             <section className="adminCreatePost" ref={btnHide} style={{ display: 'none' }}>
                 <div className='row'>
                  <div className="col-md-6 col-sm-12 p-md-2 p-sm-3">
-                 <img src={`http://localhost:5000${image}`} alt="img"/>
+                 <img src={`${API_URL}${image}`} alt="img"/>
                  </div>
                  <div className="col-md-6 col-sm-12 p-md-2 p-sm-3">
                  <h1 className="fs-5">Product: {name} </h1>

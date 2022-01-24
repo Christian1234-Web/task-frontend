@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Table, Button, Form } from 'react-bootstrap';
+import { API_URL } from "../../lib/constants";
 
 function ViewProduct() {
   let [pro, setPro] = useState([]);
@@ -21,7 +22,7 @@ function ViewProduct() {
   }, []);
 
   const getProduct = () => {
-    let url = "http://localhost:5000/product";
+    let url = `${API_URL}/product`;
     fetch(url)
       .then((res) => res.json())
       .then((result) => {
@@ -31,7 +32,7 @@ function ViewProduct() {
   }
 
   const deletePro = (_id) => {
-    let url = "http://localhost:5000/product/" + _id;
+    let url = `${API_URL}/product/${_id}`;
 
     if (window.confirm('Are you sure?')) {
 
@@ -66,7 +67,7 @@ function ViewProduct() {
   }
   const updatePro = () => {
     let item = { name, category, price, quantity, image, description,color,size }
-    let url = "http://localhost:5000/product" + proId;
+    let url = `${API_URL}/product` + proId;
     console.warn("item", item)
 
     fetch(url, {
@@ -117,7 +118,7 @@ function ViewProduct() {
                   return (
                     <tr key={i}>
                       <td>{i}</td>
-                      <td><img src={"http://localhost:5000" + e.image} alt="fyn image" style={{ width: '50px', height: '50px', objectFit: 'contain', borderRadius: '50%' }} /></td>
+                      <td><img src={`${API_URL}` + e.image} alt="fyn image" style={{ width: '50px', height: '50px', objectFit: 'contain', borderRadius: '50%' }} /></td>
                       <td>{e.name}</td>
                       <td>{e.category}</td>
                       <td>{e.price}</td>

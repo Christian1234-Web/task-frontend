@@ -4,6 +4,7 @@ import { Store } from '../../context/store';
 import ImageOne from '../../assets/images/first-slider-1.jpg';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
+import { API_URL } from "../../lib/constants";
 
 
 function Header(props) {
@@ -14,7 +15,7 @@ function Header(props) {
 
 
 let handleLogOut = async () => {
-        let url = "http://localhost:5000/user/" + cookie.adminUser;
+        let url = `${API_URL}/user/` + cookie.adminUser;
         let data = {active:false };
         if (window.confirm('Are you sure, you want to LogOut?')) {
             await axios.put(url, data).data;
@@ -57,7 +58,7 @@ let handleLogOut = async () => {
                         <Link  onClick={()=> handleLogOut()}>Logout</Link>
                     </li>
                     </div>
-                   
+
            </div>
 
             </section>

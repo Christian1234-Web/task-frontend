@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { Table, Form, Button } from 'react-bootstrap';
+import { API_URL } from "../../lib/constants";
 
 function ViewUser(props) {
   let [users, setUsers] = useState([]);
@@ -20,7 +21,7 @@ function ViewUser(props) {
   }, [])
 
   const getUsers = () => {
-    let url = "http://localhost:5000/user";
+    let url = `${API_URL}/user`;
     fetch(url)
       .then((res) => res.json())
       .then((result) => {
@@ -31,7 +32,7 @@ function ViewUser(props) {
 
 
   const deleteUser = (_id) => {
-    let url = "http://localhost:5000/user/" + _id;
+    let url = `${API_URL}/user/` + _id;
 
     if (window.confirm('Are you sure?')) {
       fetch(url, {
@@ -65,7 +66,7 @@ function ViewUser(props) {
   };
   const updateUser = () => {
     let item = { name, phone, email, password, }
-    let url = "http://localhost:5000/user/" + userId;
+    let url = `${API_URL}/user/` + userId;
     console.warn("item", item)
 
     fetch(url, {
